@@ -24,6 +24,21 @@ export const mutations = {
 }
 
 export const actions = {
+  fetchTotalEventCount({ commit, dispatch }){
+    EventService.getTotalEventCount()
+    .then((response) => {
+      console.log(response.data[0]['COUNT(*)'])
+      commit('SET_EVENTS_TOTAL', parseInt(response.data[0]['COUNT(*)']))
+    })
+    .catch((error) => {
+      const notification = {
+        type: 'error',
+        message: 'There was a problem fetching init: ' + error.message,
+      }
+      dispatch('notification/add', notification, { root: true })
+    })
+  },
+
   createEvent({ commit, dispatch }, event) {
     return EventService.postEvent(event)
       .then(() => {
@@ -46,7 +61,7 @@ export const actions = {
   fetchEvents({ commit, dispatch }, { perPage, page }) {
     EventService.getEvents(perPage, page)
       .then((response) => {
-        commit('SET_EVENTS_TOTAL', parseInt(response.headers['x-total-count']))
+        // commit('SET_EVENTS_TOTAL', parseInt(response.headers['x-total-count']))
         commit('SET_EVENTS', response.data)
       })
       .catch((error) => {

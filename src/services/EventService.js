@@ -1,7 +1,16 @@
 import axios from 'axios'
 
+// const apiClient = axios.create({
+//   baseURL: `http://localhost:3000`,
+//   withCredentials: false, // This is the default
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json'
+//   }
+// })
+
 const apiClient = axios.create({
-  baseURL: `http://localhost:3000`,
+  baseURL: `http://localhost:7000/apis/`,
   withCredentials: false, // This is the default
   headers: {
     Accept: 'application/json',
@@ -18,5 +27,8 @@ export default {
   },
   postEvent(event) {
     return apiClient.post('/events', event)
+  },
+  getTotalEventCount(){
+    return apiClient.get('/')
   }
 }

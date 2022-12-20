@@ -1,0 +1,27 @@
+{
+  "name": "node_server",
+  "version": "1.0.0",
+  "description": "toy project for the event management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pidokige02/event_man.git"
+  },
+  "keywords": [
+    "node",
+    "vue"
+  ],
+  "author": "JinHa",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "crypto-js": "^4.1.1",
+    "express": "^4.18.1",
+    "hashmap": "^2.4.0",
+    "mysql": "^2.18.1",
+    "open-graph-scraper": "^4.11.0"
+  }
+}
