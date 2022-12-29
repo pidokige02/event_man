@@ -27,7 +27,7 @@ export const actions = {
   fetchTotalEventCount({ commit, dispatch }){
     EventService.getTotalEventCount()
     .then((response) => {
-      console.log(response.data[0]['COUNT(*)'])
+      //console.log(response.data[0]['COUNT(*)'])
       commit('SET_EVENTS_TOTAL', parseInt(response.data[0]['COUNT(*)']))
     })
     .catch((error) => {
@@ -61,6 +61,8 @@ export const actions = {
   fetchEvents({ commit, dispatch }, { perPage, page }) {
     EventService.getEvents(perPage, page)
       .then((response) => {
+        const data = parseInt(response.headers['X-Total-Count'])
+        console.log("x-total-count", data)
         // commit('SET_EVENTS_TOTAL', parseInt(response.headers['x-total-count']))
         commit('SET_EVENTS', response.data)
       })
